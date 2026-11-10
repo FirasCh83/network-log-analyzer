@@ -17,7 +17,7 @@ Network Log Analyzer is a JavaFX desktop application for importing network logs 
 
 ## Prerequisites and activation
 
-Use JDK 17 or newer and Apache Maven 3.9 or newer. Maven resolves the JavaFX libraries from the `pom.xml`; there is no need to install OpenJFX separately.
+Use JDK 17 or newer, Apache Maven 3.9 or newer, and Git. Install a Windows x64 JDK from [Temurin](https://adoptium.net/temurin/releases/), Maven from its [official install guide](https://maven.apache.org/install.html), and Git from [Git for Windows](https://git-scm.com/download/win). Verify in a new PowerShell window with `java -version`, `javac -version`, `mvn -version`, and `git --version`. JavaFX is resolved automatically by Maven from `pom.xml`; no separate JavaFX SDK install is needed. Maven must report JDK 17 or newer.
 
 From the project root, compile and start the JavaFX application:
 

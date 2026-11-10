@@ -15,32 +15,60 @@ A JavaFX desktop application for analyzing network text logs and Wireshark packe
 
 The repository includes `samples/demo-capture.pcap` and `samples/sample.log` for a quick demo.
 
-## Requirements
+## Install prerequisites on Windows
 
-- JDK 17 or newer (the project uses Java 17; JDK 25 also works).
-- Apache Maven 3.9 or newer.
-- Git.
-- Windows commands below use PowerShell. Maven downloads JavaFX dependencies on the first build, so internet access is needed then.
+You need JDK 17 or newer, Maven 3.9 or newer, and Git. JavaFX is fetched by Maven from `pom.xml`; teammates do not need a separate JavaFX SDK. Official guides: [Temurin JDK downloads](https://adoptium.net/temurin/releases/), [Apache Maven install](https://maven.apache.org/install.html), [OpenJFX Maven setup](https://openjfx.io/openjfx-docs/), and [Git for Windows](https://git-scm.com/download/win).
 
-## Clone and launch
+### Install and verify Java
 
-Get the repository URL from a teammate, then:
+Install a Windows x64 Temurin JDK 17, 21, or 25. If offered, enable adding Java to PATH and setting `JAVA_HOME`. Open a new PowerShell window and check:
 
 ```powershell
-git clone <repository-url>
-cd network-log-analyzer
-mvn clean compile
-mvn javafx:run
+java -version
+javac -version
+echo $env:JAVA_HOME
 ```
 
-If Maven is extracted locally and not on PATH, replace `mvn` with its full command path. For example:
+Both Java commands must report version 17 or newer. If `JAVA_HOME` is empty, set it for the current PowerShell window to the actual JDK folder, then prepend its `bin` directory to PATH:
+
+```powershell
+$env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-21.0.x-hotspot"
+$env:Path = "$env:JAVA_HOME\bin;$env:Path"
+```
+
+Replace the example folder name with the one installed on your computer.
+
+### Install and verify Maven
+
+Download the Maven **binary ZIP** from the Apache install page and extract it, for example to `C:\Users\user\tools\apache-maven-3.10.0`. Verify it directly:
+
+```powershell
+& "C:\Users\user\tools\apache-maven-3.10.0\bin\mvn.cmd" -version
+```
+
+Maven should report its version and Java 17 or newer. Alternatively, add Maven's `bin` directory to PATH and use `mvn -version`.
+
+### Install and verify Git
+
+Install Git for Windows, open a new PowerShell window, and run `git --version`.
+
+## Clone, build, and launch
+
+Clone the team repository, then enter it:
+
+```powershell
+git clone https://github.com/FirasCh83/network-log-analyzer.git
+cd network-log-analyzer
+```
+
+Build and launch from the repository root:
 
 ```powershell
 & "C:\Users\user\tools\apache-maven-3.10.0\bin\mvn.cmd" clean compile
 & "C:\Users\user\tools\apache-maven-3.10.0\bin\mvn.cmd" javafx:run
 ```
 
-The first Maven run downloads JavaFX and build plugins. The `pom.xml` manages those dependencies; teammates do not need to install OpenJFX separately.
+If `mvn` is on PATH, use `mvn clean compile` and `mvn javafx:run` instead. The first build needs internet access so Maven can download JavaFX and build plugins. The second command opens the dashboard. Close its window to exit.
 
 ## Use the dashboard
 

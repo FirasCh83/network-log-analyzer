@@ -1,0 +1,28 @@
+# Maven build output
+target/
+out/
+
+# Local application output (keep the folder, ignore generated files)
+data/*
+!data/.gitkeep
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# IDE and editor files
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.settings/
+
+# Operating system noise
+Thumbs.db
+.DS_Store
+
+# Logs and temporary files
+*.log
+*.tmp
